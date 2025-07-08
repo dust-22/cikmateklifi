@@ -1,0 +1,285 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Ana Arka Plan Resmi (arkaplan.jpg) */
+    background-image: url('arkaplan.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* --- */
+    color: #eee;
+    overflow: hidden;
+    position: relative;
+    transition: background-image 0.5s ease-in-out, background-color 0.5s ease-in-out; /* Arka plan geçişi için */
+}
+
+/* Köşelerdeki Kalpler */
+body::before,
+body::after {
+    content: '❤️';
+    font-size: 3em;
+    position: absolute;
+    z-index: 0;
+    animation: pulse 1.5s infinite alternate;
+    color: #ff69b4;
+    transition: opacity 0.5s ease-in-out; /* Kalplerin görünürlük geçişi için */
+}
+
+body::before {
+    top: 20px;
+    left: 20px;
+}
+
+body::after {
+    bottom: 20px;
+    right: 20px;
+}
+
+/* YENİ: Giriş Ekranı Stilleri */
+.intro-container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Hafif şeffaf arka plan */
+    padding: 50px 70px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    z-index: 2; /* Diğer her şeyin üzerinde olsun */
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+}
+
+.intro-container h1 {
+    color: #ffb6c1;
+    font-size: 3em;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#startButton {
+    padding: 18px 40px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Yeşil */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+#startButton:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* YENİ: Sayaç Ekranı Stilleri */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Tüm ekranı kaplasın */
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black; /* Sayaç sırasında arka plan siyah olacak */
+    z-index: 100; /* En üstte olsun */
+    color: white;
+    font-size: 8em; /* Sayaç rakam boyutu */
+    font-weight: bold;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+#countdownNumber {
+    animation: countdownFade 1s linear forwards; /* Sayaç animasyonu */
+}
+
+/* Mevcut Ana Soru Ekranı Stilleri */
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px 60px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    color: #ffb6c1;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    width: 100%;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 2;
+}
+
+#yesButton {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#yesButton:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+#noButton {
+    background-color: #f44336;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(calc(-50% + 150px));
+}
+
+#noButton:hover {
+    background-color: #da190b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+#surpriseMessage {
+    margin-top: 40px;
+    animation: fadeIn 1s ease-out forwards;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+#surpriseMessage h2 {
+    color: #ff69b4;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.cat-gif {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 2px solid #ff69b4;
+    margin-top: 20px;
+}
+
+/* Yardımcı Sınıflar ve Animasyonlar */
+.hidden {
+    display: none !important; /* Gizli elementler için */
+}
+
+/* Ana animasyonlar */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* YENİ: Sayaç Rakam Animasyonu */
+@keyframes countdownFade {
+    0% { opacity: 0; transform: scale(0.5); }
+    20% { opacity: 1; transform: scale(1.2); }
+    80% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.8); }
+}
+
+
+/* Medya sorguları */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    .intro-container h1 {
+        font-size: 2.5em;
+    }
+    #startButton {
+        padding: 15px 30px;
+        font-size: 1.2em;
+    }
+    .container {
+        padding: 30px 40px;
+        min-height: 250px;
+    }
+    button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+    #noButton {
+        transform: translateX(calc(-50% + 120px));
+    }
+    #surpriseMessage h2 {
+        font-size: 1.5em;
+    }
+    body::before,
+    body::after {
+        font-size: 2em;
+    }
+    .countdown-container {
+        font-size: 6em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container, .intro-container {
+        padding: 20px 20px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    .intro-container h1 {
+        font-size: 2em;
+    }
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    #noButton {
+        position: relative;
+        left: auto;
+        transform: none;
+    }
+    .countdown-container {
+        font-size: 4em;
+    }
+}
